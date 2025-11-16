@@ -8,7 +8,7 @@
 
 # \## ✨ 核心特色
 
-# 
+# https://github.com/shanyeflash/qwen_camera_final/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-11-16%20203550.png
 
 # \- ✅ \*\*启用控制\*\*：可随时关闭相机控制
 
@@ -81,4 +81,5 @@
 # 
 
 # \### 人物拍摄：
+
 
