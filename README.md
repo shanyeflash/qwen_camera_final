@@ -5,7 +5,6 @@
 # 专为QWEN2509多角度LORA设计的最终版相机控制节点。
 
 # 
-<img width="420" height="420" alt="image" src="[https://github.com/user-attachments/assets/ac15de2a-04f9-40c3-b9b1-a25a19c38604](https://github.com/shanyeflash/qwen_camera_final/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-11-16%20203550.png)" />
 
 # \## ✨ 核心特色
 
@@ -82,6 +81,4 @@
 # 
 
 # \### 人物拍摄：
-
-
 
