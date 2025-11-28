@@ -1,0 +1,466 @@
+
+# ComfyUI Error Report
+## Error Details
+- **Node ID:** 78
+- **Node Type:** IPAdapterFluxLoader
+- **Exception Type:** Exception
+- **Exception Message:** Failed to load clip image processor for google/siglip-so400m-patch14-384, please check the huggingface cache directory or clip_vision directory
+
+## Stack Trace
+```
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 496, in execute
+    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, hidden_inputs=hidden_inputs)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 315, in get_output_data
+    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, hidden_inputs=hidden_inputs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 289, in _async_map_node_over_list
+    await process_inputs(input_dict, i)
+
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 277, in process_inputs
+    result = f(**inputs)
+             ^^^^^^^^^^^
+
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 135, in load_model
+    model = InstantXFluxIPAdapterModel(image_encoder_path=clip_vision, ip_ckpt=ipadapter, device=provider, num_tokens=128)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 56, in __init__
+    raise Exception(f"Failed to load clip image processor for {self.image_encoder_path}, please check the huggingface cache directory or clip_vision directory")
+
+```
+## System Information
+- **ComfyUI Version:** 0.3.64
+- **Arguments:** d:\wedui2025\comfyui-aki-v1.6\ComfyUI\main.py --dont-upcast-attention --preview-method auto --disable-cuda-malloc
+- **OS:** nt
+- **Python Version:** 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+- **Embedded Python:** false
+- **PyTorch Version:** 2.5.1+cu124
+## Devices
+
+- **Name:** cuda:0 NVIDIA GeForce RTX 4060 Ti : cudaMallocAsync
+  - **Type:** cuda
+  - **VRAM Total:** 17175150592
+  - **VRAM Free:** 15962472448
+  - **Torch VRAM Total:** 0
+  - **Torch VRAM Free:** 0
+
+## Logs
+```
+2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 -  2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.192698 - ^2025-11-09T03:01:58.193698 - ^2025-11-09T03:01:58.193698 - ^2025-11-09T03:01:58.193698 - ^2025-11-09T03:01:58.193698 - 
+2025-11-09T03:01:58.193698 - 2025-11-09T03:01:58.193698 -   File "<frozen codecs>", line 322, in decode
+2025-11-09T03:01:58.193698 - 2025-11-09T03:01:58.193698 - UnicodeDecodeError2025-11-09T03:01:58.194270 - : 2025-11-09T03:01:58.194270 - 'utf-8' codec can't decode byte 0xb2 in position 7: invalid start byte2025-11-09T03:01:58.194270 - 
+2025-11-09T03:02:03.434511 - [34m[ComfyUI-Easy-Use] server: [0mv1.3.4 [92mLoaded[0m2025-11-09T03:02:03.434511 - 
+2025-11-09T03:02:03.434511 - [34m[ComfyUI-Easy-Use] web root: [0mD:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Easy-Use\web_version/v2 [92mLoaded[0m2025-11-09T03:02:03.434511 - 
+2025-11-09T03:02:03.449239 - ComfyUI-GGUF: Partial torch compile only, consider updating pytorch
+2025-11-09T03:02:03.544492 - ### Loading: ComfyUI-Impact-Pack (V8.8.1)2025-11-09T03:02:03.544492 - 
+2025-11-09T03:02:03.556772 - [WARN] ComfyUI-Impact-Pack: custom_wildcards path not found: C:\_a\comfyui-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Impact-Pack\custom_wildcards. Using default path.2025-11-09T03:02:03.556772 - 
+2025-11-09T03:02:03.599368 - [Impact Pack] Wildcards loading done.2025-11-09T03:02:03.599368 - 
+2025-11-09T03:02:03.607370 - ### Loading: ComfyUI-Inspire-Pack (V1.13)2025-11-09T03:02:03.607370 - 
+2025-11-09T03:02:04.435388 - d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\albumentations\__init__.py:28: UserWarning: A new version of Albumentations is available: '2.0.8' (you have '2.0.3'). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2025-11-09T03:02:05.139507 - Total VRAM 16380 MB, total RAM 32621 MB
+2025-11-09T03:02:05.139507 - pytorch version: 2.5.1+cu124
+2025-11-09T03:02:05.139507 - xformers version: 0.0.28.post3
+2025-11-09T03:02:05.139507 - Set vram state to: NORMAL_VRAM
+2025-11-09T03:02:05.139507 - Device: cuda:0 NVIDIA GeForce RTX 4060 Ti : cudaMallocAsync
+2025-11-09T03:02:05.200754 - ### Loading: ComfyUI-Manager (V3.17.7)
+2025-11-09T03:02:05.528434 - ### ComfyUI Version: v0.3.64 | Released on '2025-10-08'
+2025-11-09T03:02:06.129798 - ✅ ComfyUI-NormalCrafter: Custom nodes loaded successfully.2025-11-09T03:02:06.129798 - 
+2025-11-09T03:02:06.130797 - ======================================== ComfyUI-nunchaku Initialization ========================================
+2025-11-09T03:02:06.132797 - Nunchaku version: 1.0.0
+2025-11-09T03:02:06.133797 - ComfyUI-nunchaku version: 1.0.1
+2025-11-09T03:02:06.410639 - =================================================================================================================
+2025-11-09T03:02:06.417675 - ======================================== ComfyUI-QwenImageLoraLoader Initialization ========================================
+2025-11-09T03:02:06.419675 - [DEBUG] Added to sys.path: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-QwenImageLoraLoader2025-11-09T03:02:06.419675 - 
+2025-11-09T03:02:06.420675 - [DEBUG] wrappers dir exists: True2025-11-09T03:02:06.420675 - 
+2025-11-09T03:02:06.420675 - [DEBUG] qwenimage.py exists: True2025-11-09T03:02:06.420675 - 
+2025-11-09T03:02:06.420675 - ============================================================================================================================
+2025-11-09T03:02:06.452148 - 📊 Initial VRAM status: 14.87GB free / 16.00GB total2025-11-09T03:02:06.452148 - 
+2025-11-09T03:02:06.574684 - ReservedVRAM API routes registered successfully2025-11-09T03:02:06.574684 - 
+2025-11-09T03:02:06.711701 - (pysssss:WD14Tagger) [DEBUG] Available ORT providers: TensorrtExecutionProvider, CUDAExecutionProvider, CPUExecutionProvider2025-11-09T03:02:06.711701 - 
+2025-11-09T03:02:06.711701 - (pysssss:WD14Tagger) [DEBUG] Using ORT providers: CUDAExecutionProvider, CPUExecutionProvider2025-11-09T03:02:06.711701 - 
+2025-11-09T03:02:06.807703 - ------------------------------------------2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.807703 - [34mComfyroll Studio v1.76 : [92m 175 Nodes Loaded[0m2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.807703 - ------------------------------------------2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.807703 - ** For changes, please see patch notes at https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/blob/main/Patch_Notes.md2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.807703 - ** For help, please see the wiki at https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes/wiki2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.807703 - ------------------------------------------2025-11-09T03:02:06.807703 - 
+2025-11-09T03:02:06.815703 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using ckpts path: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_controlnet_aux\ckpts[0m
+2025-11-09T03:02:06.815703 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using symlinks: False[0m
+2025-11-09T03:02:06.815703 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfyui_controlnet_aux] | INFO -> Using ort providers: ['CUDAExecutionProvider', 'DirectMLExecutionProvider', 'OpenVINOExecutionProvider', 'ROCMExecutionProvider', 'CPUExecutionProvider', 'CoreMLExecutionProvider'][0m
+2025-11-09T03:02:10.951816 - [1;35m
+### [START] ComfyUI AlekPet Nodes [1;34mv1.0.85[0m[1;35m ###[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> ArgosTranslateNode: [93mArgosTranslateCLIPTextEncodeNode, ArgosTranslateTextNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> ChatGLMNode: [93mChatGLM4TranslateCLIPTextEncodeNode, ChatGLM4TranslateTextNode, ChatGLM4InstructNode, ChatGLM4InstructMediaNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> DeepTranslatorNode: [93mDeepTranslatorCLIPTextEncodeNode, DeepTranslatorTextNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> ExtrasNode: [93mPreviewTextNode, HexToHueNode, ColorsCorrectNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> GoogleTranslateNode: [93mGoogleTranslateCLIPTextEncodeNode, GoogleTranslateTextNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> IDENode: [93mIDENode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> PainterNode: [93mPainterNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [92mNode -> PoseNode: [93mPoseNode[0m [92m[92m[Loading][0m[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:10.951816 - [1;35m### [END] ComfyUI AlekPet Nodes ###[0m2025-11-09T03:02:10.951816 - 
+2025-11-09T03:02:11.634256 - ✨提示词小助手 V1.2.0 [92m已启动[0m2025-11-09T03:02:11.634256 - 
+2025-11-09T03:02:11.703878 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfy_mtb] | INFO -> loaded [96m110[0m nodes successfuly[0m
+2025-11-09T03:02:11.704878 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfy_mtb] | INFO -> Some nodes (2) could not be loaded. This can be ignored, but go to http://127.0.0.1:8188/mtb if you want more information.[0m
+2025-11-09T03:02:11.711566 - 
+[32mInitializing ControlAltAI Nodes[0m2025-11-09T03:02:11.711566 - 
+2025-11-09T03:02:11.734565 - 
+[36mEfficiency Nodes:[0m Attempting to add Control Net options to the 'HiRes-Fix Script' Node (comfyui_controlnet_aux add-on)...[92mSuccess![0m2025-11-09T03:02:11.734565 - 
+2025-11-09T03:02:11.743566 - [KontextStyleTransfer] 无法检查兼容性，继续加载...2025-11-09T03:02:11.743566 - 
+2025-11-09T03:02:11.744566 - [KontextStyleTransfer] 节点加载成功！版本: 1.0.02025-11-09T03:02:11.744566 - 
+2025-11-09T03:02:11.744566 - [KontextStyleTransfer] 包含 104 种风格预设2025-11-09T03:02:11.744566 - 
+2025-11-09T03:02:15.013693 - [34mWAS Node Suite: [0mOpenCV Python FFMPEG support is enabled[0m2025-11-09T03:02:15.013693 - 
+2025-11-09T03:02:15.013693 - [34mWAS Node Suite [93mWarning: [0m`ffmpeg_bin_path` is not set in `D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\pr-was-node-suite-comfyui-47064894\was_suite_config.json` config file. Will attempt to use system ffmpeg binaries if available.[0m2025-11-09T03:02:15.013693 - 
+2025-11-09T03:02:17.641076 - [34mWAS Node Suite: [0mFinished.[0m [32mLoaded[0m [0m220[0m [32mnodes successfully.[0m2025-11-09T03:02:17.641076 - 
+2025-11-09T03:02:17.641076 - 
+	[3m[93m"Every artist dips his brush in his own soul, and paints his own nature into his pictures."[0m[3m - Henry Ward Beecher[0m
+2025-11-09T03:02:17.641076 - 
+2025-11-09T03:02:18.982218 - 
+2025-11-09T03:02:18.982218 - [92m[rgthree-comfy] Loaded 66 fantastic nodes. 🎉[0m2025-11-09T03:02:18.982218 - 
+2025-11-09T03:02:18.982218 - 
+2025-11-09T03:02:18.995794 - Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\nodes.py", line 2133, in load_custom_node
+    module_spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1130, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\WEDUI2025\\ComfyUI-aki-v1.6\\ComfyUI\\custom_nodes\\teacache\\__init__.py'
+
+2025-11-09T03:02:18.995794 - Cannot import D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\teacache module for custom nodes: [Errno 2] No such file or directory: 'D:\\WEDUI2025\\ComfyUI-aki-v1.6\\ComfyUI\\custom_nodes\\teacache\\__init__.py'
+2025-11-09T03:02:21.426758 - [34mWAS Node Suite: [0mOpenCV Python FFMPEG support is enabled[0m2025-11-09T03:02:21.426758 - 
+2025-11-09T03:02:21.426758 - [34mWAS Node Suite [93mWarning: [0m`ffmpeg_bin_path` is not set in `D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\was-node-suite-comfyui\was_suite_config.json` config file. Will attempt to use system ffmpeg binaries if available.[0m2025-11-09T03:02:21.426758 - 
+2025-11-09T03:02:23.941256 - [34mWAS Node Suite: [0mFinished.[0m [32mLoaded[0m [0m220[0m [32mnodes successfully.[0m2025-11-09T03:02:23.941256 - 
+2025-11-09T03:02:23.941256 - 
+	[3m[93m"Believe you can and you're halfway there."[0m[3m - Theodore Roosevelt[0m
+2025-11-09T03:02:23.941256 - 
+2025-11-09T03:02:23.964172 - 
+Import times for custom nodes:
+2025-11-09T03:02:23.964172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Photopea
+2025-11-09T03:02:23.964172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\websocket_image_save.py
+2025-11-09T03:02:23.964172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI_AdvancedRefluxControl
+2025-11-09T03:02:23.964172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI_RH_UNO
+2025-11-09T03:02:23.964172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\image_with_prompt
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\kontext-presets
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Kontext-Inpainting
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-VLM-DreamOmni2
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\quick-connections
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\banana-API-G
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\Comfyui-QwenEditUtils
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-OpenPose-Editor
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-logic
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_ttp_toolset
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IC-Light-Native
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\Comfyui-Memory_Cleanup
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\sd-dynamic-thresholding
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\kontext_style_transfer_fixed.py
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\cg-use-everywhere
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-DyPE
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-WD14-Tagger
+2025-11-09T03:02:23.965172 -    0.0 seconds (IMPORT FAILED): D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\teacache
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-MJAPI-party
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-GGUF
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-InpaintEasy
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-QwenImageLoraLoader
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\AIGODLIKE-COMFYUI-TRANSLATION
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-enricos-nodes
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_ipadapter_plus
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\efficiency-nodes-comfyui
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-layerdiffuse
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-TeaCache
+2025-11-09T03:02:23.965172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-NormalCrafterWrapper
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_essentials_mb
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_essentials
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_UltimateSDUpscale
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-custom-scripts
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\Comfyui_BananaTutuapi
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_lg_tools
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\x-flux-comfyui
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ControlAltAI-Nodes
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_controlnet_aux
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-advanced-controlnet
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-tools_zero
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI_BiRefNet_ll
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI_Comfyroll_CustomNodes
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-animatediff-evolved
+2025-11-09T03:02:23.966172 -    0.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-Inspire-Pack
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfy_mtb
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-Impact-Pack
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-KJNodes
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-HunyuanVideoWrapper
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-SeedVR2_VideoUpscaler
+2025-11-09T03:02:23.966172 -    0.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-VideoHelperSuite
+2025-11-09T03:02:23.966172 -    0.2 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI_LayerStyle
+2025-11-09T03:02:23.966172 -    0.3 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-nunchaku
+2025-11-09T03:02:23.966172 -    0.5 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_prompt_assistant
+2025-11-09T03:02:23.966172 -    0.6 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\rgthree-comfy
+2025-11-09T03:02:23.966172 -    0.6 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-art-venture
+2025-11-09T03:02:23.966172 -    0.8 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-crystools
+2025-11-09T03:02:23.966172 -    0.8 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\rembg-comfyui-node
+2025-11-09T03:02:23.966172 -    0.9 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-manager
+2025-11-09T03:02:23.966172 -    1.4 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Inspyrenet-Rembg
+2025-11-09T03:02:23.966172 -    4.1 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui_custom_nodes_alekpet
+2025-11-09T03:02:23.967172 -    5.0 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\was-node-suite-comfyui
+2025-11-09T03:02:23.967172 -    5.9 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\pr-was-node-suite-comfyui-47064894
+2025-11-09T03:02:23.967172 -    6.4 seconds: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-Easy-Use
+2025-11-09T03:02:23.967172 - 
+2025-11-09T03:02:24.588584 - Context impl SQLiteImpl.
+2025-11-09T03:02:24.588584 - Will assume non-transactional DDL.
+2025-11-09T03:02:24.591445 - No target revision found.
+2025-11-09T03:02:24.623290 - Starting server
+
+2025-11-09T03:02:24.623290 - To see the GUI go to: http://127.0.0.1:8188
+2025-11-09T03:02:25.987718 - [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/alter-list.json
+2025-11-09T03:02:26.000655 - [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/model-list.json
+2025-11-09T03:02:26.134000 - [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/github-stats.json
+2025-11-09T03:02:26.228217 - [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/custom-node-list.json
+2025-11-09T03:02:26.271102 - [ComfyUI-Manager] default cache updated: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/extension-node-map.json
+2025-11-09T03:02:30.886471 - FETCH ComfyRegistry Data: 5/1052025-11-09T03:02:30.886471 - 
+2025-11-09T03:02:37.285022 - FETCH ComfyRegistry Data: 10/1052025-11-09T03:02:37.285022 - 
+2025-11-09T03:02:42.713813 - FETCH ComfyRegistry Data: 15/1052025-11-09T03:02:42.713813 - 
+2025-11-09T03:02:48.281126 - FETCH ComfyRegistry Data: 20/1052025-11-09T03:02:48.281126 - 
+2025-11-09T03:02:53.368370 - FETCH ComfyRegistry Data: 25/1052025-11-09T03:02:53.368370 - 
+2025-11-09T03:02:58.366952 - FETCH ComfyRegistry Data: 30/1052025-11-09T03:02:58.366952 - 
+2025-11-09T03:03:02.876220 - FETCH ComfyRegistry Data: 35/1052025-11-09T03:03:02.876220 - 
+2025-11-09T03:03:07.349614 - FETCH ComfyRegistry Data: 40/1052025-11-09T03:03:07.349614 - 
+2025-11-09T03:03:12.855328 - FETCH ComfyRegistry Data: 45/1052025-11-09T03:03:12.855328 - 
+2025-11-09T03:03:19.665756 - FETCH ComfyRegistry Data: 50/1052025-11-09T03:03:19.665756 - 
+2025-11-09T03:03:25.700883 - FETCH ComfyRegistry Data: 55/1052025-11-09T03:03:25.700883 - 
+2025-11-09T03:03:31.366085 - FETCH ComfyRegistry Data: 60/1052025-11-09T03:03:31.366085 - 
+2025-11-09T03:03:38.123586 - FETCH ComfyRegistry Data: 65/1052025-11-09T03:03:38.123586 - 
+2025-11-09T03:03:44.850821 - FETCH ComfyRegistry Data: 70/1052025-11-09T03:03:44.850821 - 
+2025-11-09T03:03:50.117347 - FETCH ComfyRegistry Data: 75/1052025-11-09T03:03:50.117347 - 
+2025-11-09T03:03:57.079609 - FETCH ComfyRegistry Data: 80/1052025-11-09T03:03:57.079609 - 
+2025-11-09T03:04:01.619604 - FETCH ComfyRegistry Data: 85/1052025-11-09T03:04:01.619604 - 
+2025-11-09T03:04:06.608214 - FETCH ComfyRegistry Data: 90/1052025-11-09T03:04:06.608214 - 
+2025-11-09T03:04:12.687823 - FETCH ComfyRegistry Data: 95/1052025-11-09T03:04:12.687823 - 
+2025-11-09T03:04:17.750494 - FETCH ComfyRegistry Data: 100/1052025-11-09T03:04:17.750494 - 
+2025-11-09T03:04:23.464207 - FETCH ComfyRegistry Data: 105/1052025-11-09T03:04:23.464207 - 
+2025-11-09T03:04:23.965148 - FETCH ComfyRegistry Data [DONE]2025-11-09T03:04:23.965148 - 
+2025-11-09T03:04:24.105293 - [ComfyUI-Manager] default cache updated: https://api.comfy.org/nodes
+2025-11-09T03:04:24.125901 - nightly_channel: 2025-11-09T03:04:24.125901 - 
+2025-11-09T03:04:24.125901 - https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/node_db/new/rem2025-11-09T03:04:24.125901 - 
+2025-11-09T03:04:24.125901 - ote2025-11-09T03:04:24.126901 - 
+2025-11-09T03:04:24.126901 - FETCH DATA from: https://raw.githubusercontent.com/ltdrdata/ComfyUI-Manager/main/node_db/new/custom-node-list.json2025-11-09T03:04:24.126901 - 2025-11-09T03:04:24.757118 -  [DONE]2025-11-09T03:04:24.757118 - 
+2025-11-09T03:04:24.758133 - [ComfyUI-Manager] All startup tasks have been completed.
+2025-11-09T03:06:49.059326 - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+2025-11-09T03:06:50.871603 - FETCH DATA from: D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\comfyui-manager\extension-node-map.json2025-11-09T03:06:50.871603 - 2025-11-09T03:06:50.879837 -  [DONE]2025-11-09T03:06:50.879837 - 
+2025-11-09T03:06:53.234946 - [36;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfy_mtb] | INFO -> Found multiple match, we will pick the last D:\WEDUI2025\sd-webui-forge-aki-v1.0\models\SwinIR
+['D:\\WEDUI2025\\ComfyUI-aki-v1.6\\ComfyUI\\models\\upscale_models', 'D:\\WEDUI2025\\sd-webui-forge-aki-v1.0\\models\\ESRGAN', 'D:\\WEDUI2025\\sd-webui-forge-aki-v1.0\\models\\RealESRGAN', 'D:\\WEDUI2025\\sd-webui-forge-aki-v1.0\\models\\SwinIR'][0m
+2025-11-09T03:06:53.234946 - [33;20m[D:\WEDUI2025\ComfyUI-aki-v1_x_6\ComfyUI\custom_nodes\comfy_mtb] | WARNING -> Face restoration models not found.[0m
+2025-11-09T03:06:53.275395 - []2025-11-09T03:06:53.275395 - 
+2025-11-09T03:06:53.275395 - []2025-11-09T03:06:53.275395 - 
+2025-11-09T03:07:09.977307 - [34m[✨PromptAssistant][0m 翻译请求 | 服务:智谱翻译 | 请求ID:llm_trans_1762628829975_7zhxuq | 原文长度:486 | 方向:en->zh2025-11-09T03:07:09.977307 - 
+2025-11-09T03:07:10.107906 - [33m[✨PromptAssistant][0m 调用LLM API | 服务:智谱 | 模型:glm-4-flash-2504142025-11-09T03:07:10.107906 - 
+2025-11-09T03:07:10.409710 - [33m[✨PromptAssistant][0m HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions2025-11-09T03:07:10.409710 - 
+2025-11-09T03:07:13.522981 - [32m[✨PromptAssistant][0m 翻译完成 | 服务:智谱翻译 | 请求ID:llm_trans_1762628829975_7zhxuq | 结果字符数:126 | 耗时:3415ms2025-11-09T03:07:13.522981 - 
+2025-11-09T03:07:50.355520 - got prompt
+2025-11-09T03:07:50.460766 - Using xformers attention in VAE
+2025-11-09T03:07:50.461766 - Using xformers attention in VAE
+2025-11-09T03:07:51.145999 - VAE load device: cuda:0, offload device: cpu, dtype: torch.bfloat16
+2025-11-09T03:07:51.205987 - Loading InstantX IPAdapter Flux model.
+2025-11-09T03:08:52.398581 - !!! Exception during processing !!! Failed to load clip image processor for google/siglip-so400m-patch14-384, please check the huggingface cache directory or clip_vision directory
+2025-11-09T03:08:52.402792 - Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 478, in cached_files
+    hf_hub_download(
+  File "<enhanced_experience patches.hfmirror.huggingface_hub>", line 47, in hf_hub_download_wrapper_inner
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: 'D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\models\clip_vision/siglip-so400m-patch14-384'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 49, in __init__
+    self.image_encoder = SiglipVisionModel.from_pretrained(CLIP_VISION_DIR+"/"+self.image_encoder_path.split("/")[-1]).to(self.device, dtype=torch.float16)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\modeling_utils.py", line 4863, in from_pretrained
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 530, in cached_files
+    resolved_files = [
+                     ^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 531, in <listcomp>
+    _get_cache_file_to_return(path_or_repo_id, filename, cache_dir, revision, repo_type)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 144, in _get_cache_file_to_return
+    resolved_file = try_to_load_from_cache(
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 160, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: 'D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\models\clip_vision/siglip-so400m-patch14-384'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\util\connection.py", line 95, in create_connection
+    raise err
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connectionpool.py", line 1061, in _validate_conn
+    conn.connect()
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connection.py", line 179, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x0000020D81CC1110>, 'Connection to huggingface.co timed out. (connect timeout=10)')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\urllib3\util\retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /google/siglip-so400m-patch14-384/resolve/main/config.json (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000020D81CC1110>, 'Connection to huggingface.co timed out. (connect timeout=10)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 1546, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 1463, in get_hf_file_metadata
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 286, in _request_wrapper
+    response = _request_wrapper(
+               ^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 309, in _request_wrapper
+    response = http_backoff(method=method, url=url, **params, retry_on_exceptions=(), retry_on_status_codes=(429,))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_http.py", line 310, in http_backoff
+    response = session.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /google/siglip-so400m-patch14-384/resolve/main/config.json (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000020D81CC1110>, 'Connection to huggingface.co timed out. (connect timeout=10)'))"), '(Request ID: f0427232-a135-4825-86f7-6e5661350df5)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 478, in cached_files
+    hf_hub_download(
+  File "<enhanced_experience patches.hfmirror.huggingface_hub>", line 47, in hf_hub_download_wrapper_inner
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 1010, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 1117, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\huggingface_hub\file_download.py", line 1661, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+huggingface_hub.errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 53, in __init__
+    self.image_encoder = SiglipVisionModel.from_pretrained(self.image_encoder_path).to(self.device, dtype=torch.float16)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\modeling_utils.py", line 4973, in from_pretrained
+    config, model_kwargs = cls.config_class.from_pretrained(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\configuration_utils.py", line 622, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\configuration_utils.py", line 662, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\configuration_utils.py", line 721, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 321, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\python\Lib\site-packages\transformers\utils\hub.py", line 552, in cached_files
+    raise OSError(
+OSError: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 496, in execute
+    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, hidden_inputs=hidden_inputs)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 315, in get_output_data
+    return_values = await _async_map_node_over_list(prompt_id, unique_id, obj, input_data_all, obj.FUNCTION, allow_interrupt=True, execution_block_cb=execution_block_cb, pre_execute_cb=pre_execute_cb, hidden_inputs=hidden_inputs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 289, in _async_map_node_over_list
+    await process_inputs(input_dict, i)
+  File "d:\wedui2025\comfyui-aki-v1.6\ComfyUI\execution.py", line 277, in process_inputs
+    result = f(**inputs)
+             ^^^^^^^^^^^
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 135, in load_model
+    model = InstantXFluxIPAdapterModel(image_encoder_path=clip_vision, ip_ckpt=ipadapter, device=provider, num_tokens=128)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\WEDUI2025\ComfyUI-aki-v1.6\ComfyUI\custom_nodes\ComfyUI-IPAdapter-Flux\ipadapter_flux.py", line 56, in __init__
+    raise Exception(f"Failed to load clip image processor for {self.image_encoder_path}, please check the huggingface cache directory or clip_vision directory")
+Exception: Failed to load clip image processor for google/siglip-so400m-patch14-384, please check the huggingface cache directory or clip_vision directory
+
+2025-11-09T03:08:52.403793 - Prompt executed in 62.02 seconds
+
+```
+## Attached Workflow
+Please make sure that workflow does not contain any sensitive information such as API keys or passwords.
+```
+{"id":"453351d2-f61e-49e3-8c8b-f69c6dccc48a","revision":0,"last_node_id":90,"last_link_id":134,"nodes":[{"id":16,"type":"KSamplerSelect","pos":[4890,1390],"size":[239.83981323242188,62.92873764038086],"flags":{},"order":0,"mode":0,"inputs":[{"label":"采样器","localized_name":"采样器名称","name":"sampler_name","type":"COMBO","widget":{"name":"sampler_name"},"link":null}],"outputs":[{"label":"采样器","localized_name":"采样器","name":"SAMPLER","type":"SAMPLER","links":[19]}],"properties":{"Node name for S&R":"KSamplerSelect","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["euler"]},{"id":17,"type":"BasicScheduler","pos":[4890,1230],"size":[239.07925415039062,113.84300994873047],"flags":{},"order":10,"mode":0,"inputs":[{"label":"模型","localized_name":"模型","name":"model","type":"MODEL","link":128},{"label":"调度器","localized_name":"调度器","name":"scheduler","type":"COMBO","widget":{"name":"scheduler"},"link":null},{"label":"步数","localized_name":"步数","name":"steps","type":"INT","widget":{"name":"steps"},"link":null},{"label":"降噪","localized_name":"降噪","name":"denoise","type":"FLOAT","widget":{"name":"denoise"},"link":null}],"outputs":[{"label":"Sigmas","localized_name":"Sigmas","name":"SIGMAS","type":"SIGMAS","links":[20]}],"properties":{"Node name for S&R":"BasicScheduler","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["simple",25,1]},{"id":13,"type":"SamplerCustomAdvanced","pos":[5150,1230],"size":[237.43406677246094,262.4136657714844],"flags":{"collapsed":false},"order":13,"mode":0,"inputs":[{"label":"噪波生成","localized_name":"噪波","name":"noise","type":"NOISE","link":37},{"label":"引导","localized_name":"引导器","name":"guider","type":"GUIDER","link":30},{"label":"采样器","localized_name":"采样器","name":"sampler","type":"SAMPLER","link":19},{"label":"Sigmas","localized_name":"西格玛","name":"sigmas","type":"SIGMAS","link":20},{"label":"Latent","localized_name":"Latent图像","name":"latent_image","type":"LATENT","link":110}],"outputs":[{"label":"输出","localized_name":"Latent","name":"output","type":"LATENT","slot_index":0,"links":[24]},{"label":"降噪输出","localized_name":"降噪Latent","name":"denoised_output","type":"LATENT","links":null}],"properties":{"Node name for S&R":"SamplerCustomAdvanced","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[]},{"id":77,"type":"EmptyLatentImage","pos":[3941,1625],"size":[315,106],"flags":{},"order":1,"mode":0,"inputs":[{"label":"宽度","localized_name":"宽度","name":"width","type":"INT","widget":{"name":"width"},"link":null},{"label":"高度","localized_name":"高度","name":"height","type":"INT","widget":{"name":"height"},"link":null},{"label":"批次大小","localized_name":"批量大小","name":"batch_size","type":"INT","widget":{"name":"batch_size"},"link":null}],"outputs":[{"label":"Latent","localized_name":"Latent","name":"LATENT","type":"LATENT","slot_index":0,"links":[110]}],"properties":{"Node name for S&R":"EmptyLatentImage","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[768,1024,1]},{"id":88,"type":"FluxGuidance","pos":[4325,1378],"size":[317.4000244140625,58],"flags":{},"order":11,"mode":0,"inputs":[{"label":"条件","localized_name":"条件","name":"conditioning","type":"CONDITIONING","link":129},{"label":"引导","localized_name":"引导","name":"guidance","type":"FLOAT","widget":{"name":"guidance"},"link":null}],"outputs":[{"label":"条件","localized_name":"条件","name":"CONDITIONING","type":"CONDITIONING","slot_index":0,"links":[130]}],"properties":{"Node name for S&R":"FluxGuidance","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[3.5]},{"id":22,"type":"BasicGuider","pos":[4888,1531],"size":[234.7953643798828,101.4401626586914],"flags":{"collapsed":false},"order":12,"mode":0,"inputs":[{"label":"模型","localized_name":"模型","name":"model","type":"MODEL","link":132},{"label":"条件","localized_name":"条件","name":"conditioning","type":"CONDITIONING","link":130}],"outputs":[{"label":"引导","localized_name":"引导器","name":"GUIDER","type":"GUIDER","slot_index":0,"links":[30]}],"properties":{"Node name for S&R":"BasicGuider","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[]},{"id":8,"type":"VAEDecode","pos":[5158,1547],"size":[237.8846435546875,89.71307373046875],"flags":{"collapsed":false},"order":14,"mode":0,"inputs":[{"label":"Latent","localized_name":"Latent","name":"samples","type":"LATENT","link":24},{"label":"VAE","localized_name":"vae","name":"vae","type":"VAE","link":12}],"outputs":[{"label":"图像","localized_name":"图像","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[9]}],"properties":{"Node name for S&R":"VAEDecode","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[]},{"id":9,"type":"SaveImage","pos":[5453,848],"size":[1023.5243530273438,1062.5860595703125],"flags":{},"order":15,"mode":0,"inputs":[{"label":"图像","localized_name":"图片","name":"images","type":"IMAGE","link":9},{"label":"文件名前缀","localized_name":"文件名前缀","name":"filename_prefix","type":"STRING","widget":{"name":"filename_prefix"},"link":null}],"outputs":[],"properties":{"Node name for S&R":"SaveImage","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["Flux_Lora"]},{"id":25,"type":"RandomNoise","pos":[4892,1066],"size":[318.5107421875,95.78140258789062],"flags":{},"order":2,"mode":0,"inputs":[{"label":"随机种","localized_name":"噪波随机种","name":"noise_seed","type":"INT","widget":{"name":"noise_seed"},"link":null}],"outputs":[{"label":"噪波生成","localized_name":"噪波","name":"NOISE","type":"NOISE","links":[37]}],"properties":{"Node name for S&R":"RandomNoise","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[613995512770396,"randomize"]},{"id":79,"type":"ApplyIPAdapterFlux","pos":[4720,760],"size":[327.5999755859375,146],"flags":{},"order":8,"mode":0,"inputs":[{"label":"model","localized_name":"model","name":"model","type":"MODEL","link":133},{"label":"ipadapter_flux","localized_name":"ipadapter_flux","name":"ipadapter_flux","type":"IP_ADAPTER_FLUX_INSTANTX","link":113},{"label":"image","localized_name":"image","name":"image","type":"IMAGE","link":116},{"label":"weight","localized_name":"weight","name":"weight","type":"FLOAT","widget":{"name":"weight"},"link":null},{"label":"start_percent","localized_name":"start_percent","name":"start_percent","type":"FLOAT","widget":{"name":"start_percent"},"link":null},{"label":"end_percent","localized_name":"end_percent","name":"end_percent","type":"FLOAT","widget":{"name":"end_percent"},"link":null}],"outputs":[{"label":"MODEL","localized_name":"模型","name":"MODEL","type":"MODEL","slot_index":0,"links":[128,132]}],"properties":{"Node name for S&R":"ApplyIPAdapterFlux","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":[0.75,0,1]},{"id":80,"type":"LoadImage","pos":[3926,694],"size":[315,314],"flags":{},"order":4,"mode":0,"inputs":[{"label":"图像","localized_name":"图像","name":"image","type":"COMBO","widget":{"name":"image"},"link":null},{"localized_name":"选择文件上传","name":"upload","type":"IMAGEUPLOAD","widget":{"name":"upload"},"link":null}],"outputs":[{"label":"图像","localized_name":"图像","name":"IMAGE","type":"IMAGE","slot_index":0,"links":[116]},{"label":"遮罩","localized_name":"遮罩","name":"MASK","type":"MASK","links":null}],"properties":{"Node name for S&R":"LoadImage","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["2 (2).jpg","image"]},{"id":87,"type":"CLIPTextEncode","pos":[4304,1105],"size":[400,200],"flags":{},"order":9,"mode":0,"inputs":[{"label":"CLIP","localized_name":"clip","name":"clip","type":"CLIP","link":134},{"label":"文本","localized_name":"文本","name":"text","type":"STRING","widget":{"name":"text"},"link":null}],"outputs":[{"label":"条件","localized_name":"条件","name":"CONDITIONING","type":"CONDITIONING","slot_index":0,"links":[129]}],"properties":{"Node name for S&R":"CLIPTextEncode","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["The image is a portrait of a man with a long beard and a fierce expression on his face. He is wearing a pair of large antlers on his head, which are covered in a brown cloth. The antlers are pointed and have a rough texture. The man's face is covered in white paint, which contrasts with the dark color of the antlers. He has a muscular build and is shirtless, showing off his toned physique. The background is a pale blue sky, and the overall mood of the image is intense and powerful."]},{"id":10,"type":"VAELoader","pos":[3940,1470],"size":[315,58],"flags":{},"order":5,"mode":0,"inputs":[{"label":"vae名称","localized_name":"vae名称","name":"vae_name","type":"COMBO","widget":{"name":"vae_name"},"link":null}],"outputs":[{"localized_name":"VAE","name":"VAE","type":"VAE","slot_index":0,"links":[12]}],"properties":{"Node name for S&R":"VAELoader","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["ae.safetensors"]},{"id":89,"type":"UnetLoaderGGUF","pos":[3920,1100],"size":[270,58],"flags":{},"order":6,"mode":0,"inputs":[{"label":"unet_name","localized_name":"unet_name","name":"unet_name","type":"COMBO","widget":{"name":"unet_name"},"link":null}],"outputs":[{"label":"MODEL","localized_name":"模型","name":"MODEL","type":"MODEL","links":[133]}],"properties":{"Node name for S&R":"UnetLoaderGGUF","ue_properties":{"widget_ue_connectable":{"unet_name":true},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["flux1-dev-Q5_K_S.gguf"]},{"id":90,"type":"DualCLIPLoaderGGUF","pos":[3920,1240],"size":[270,106],"flags":{},"order":7,"mode":0,"inputs":[{"label":"clip_name1","localized_name":"clip_name1","name":"clip_name1","type":"COMBO","widget":{"name":"clip_name1"},"link":null},{"label":"clip_name2","localized_name":"clip_name2","name":"clip_name2","type":"COMBO","widget":{"name":"clip_name2"},"link":null},{"label":"type","localized_name":"type","name":"type","type":"COMBO","widget":{"name":"type"},"link":null}],"outputs":[{"label":"CLIP","localized_name":"CLIP","name":"CLIP","type":"CLIP","links":[134]}],"properties":{"Node name for S&R":"DualCLIPLoaderGGUF","ue_properties":{"widget_ue_connectable":{"clip_name1":true,"clip_name2":true,"type":true},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["clip_l.safetensors","t5-v1_1-xxl-encoder-Q5_K_S.gguf","flux"]},{"id":78,"type":"IPAdapterFluxLoader","pos":[4330,800],"size":[315,106],"flags":{},"order":3,"mode":0,"inputs":[{"label":"ipadapter","localized_name":"ipadapter","name":"ipadapter","type":"COMBO","widget":{"name":"ipadapter"},"link":null},{"label":"clip_vision","localized_name":"clip_vision","name":"clip_vision","type":"COMBO","widget":{"name":"clip_vision"},"link":null},{"label":"provider","localized_name":"provider","name":"provider","type":"COMBO","widget":{"name":"provider"},"link":null}],"outputs":[{"label":"ipadapterFlux","localized_name":"ipadapterFlux","name":"ipadapterFlux","type":"IP_ADAPTER_FLUX_INSTANTX","slot_index":0,"links":[113]}],"properties":{"Node name for S&R":"IPAdapterFluxLoader","ue_properties":{"widget_ue_connectable":{},"version":"7.1","input_ue_unconnectable":{}}},"widgets_values":["ip-adapter.bin","google/siglip-so400m-patch14-384","cuda"]}],"links":[[9,8,0,9,0,"IMAGE"],[12,10,0,8,1,"VAE"],[19,16,0,13,2,"SAMPLER"],[20,17,0,13,3,"SIGMAS"],[24,13,0,8,0,"LATENT"],[30,22,0,13,1,"GUIDER"],[37,25,0,13,0,"NOISE"],[110,77,0,13,4,"LATENT"],[113,78,0,79,1,"IP_ADAPTER_FLUX_INSTANTX"],[116,80,0,79,2,"IMAGE"],[128,79,0,17,0,"MODEL"],[129,87,0,88,0,"CONDITIONING"],[130,88,0,22,1,"CONDITIONING"],[132,79,0,22,0,"MODEL"],[133,89,0,79,0,"MODEL"],[134,90,0,87,0,"CLIP"]],"groups":[],"config":{},"extra":{"ds":{"scale":1.2100000000000004,"offset":[-3842.7019675724,-694.7425125309622]},"0246.VERSION":[0,0,4],"ue_links":[],"node_versions":{"comfy-core":"0.3.64","ComfyUI-GGUF":"1.1.4"},"links_added_by_ue":[]},"version":0.4}
+```
+
+## Additional Context
+(Please add any additional context or steps to reproduce the error here)
