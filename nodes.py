@@ -6,6 +6,9 @@ class QWENCameraControl:
     def INPUT_TYPES(cls):
         return {
             "required": {
+                # 总开关
+                "总开关": ("BOOLEAN", {"default": True}),
+                
                 # 视角控制组 - 改为滑块形式
                 "视角控制": ("BOOLEAN", {"default": True}),
                 "仰视视角": ("INT", {"default": 0, "min": 0, "max": 1, "step": 1, "display": "slider"}),
@@ -41,10 +44,14 @@ class QWENCameraControl:
     FUNCTION = "generate_prompt"
     CATEGORY = "QWEN相机"
 
-    def generate_prompt(self, 视角控制, 仰视视角, 俯视视角, 广角视角, 特写视角, 远景视角,
+    def generate_prompt(self, 总开关, 视角控制, 仰视视角, 俯视视角, 广角视角, 特写视角, 远景视角,
                        角度控制, 向左旋转角度, 向右旋转角度, 向下俯视角度,
                        专业视图控制, 完整的四视图, 正面视图, 侧面视图, 背面视图, 半侧面视图,
                        单色线稿风格, 插画卡通风格, 三维渲染动漫风格, Q版卡通风格):
+        
+        # 检查总开关状态
+        if not 总开关:
+            return ("",)  # 返回空字符串
         
         prompt_parts = []
         
